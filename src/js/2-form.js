@@ -25,12 +25,16 @@ function saveData (event) {
 formEl.addEventListener("input", saveData);
 
 function sendForm(event) {
+    if (emailInputEL.value === "" || msgInputEL.value === "") {
+        return alert("Fill please all fields")
+    } else {
     console.log(formData);
     event.preventDefault();
     event.currentTarget.reset();
     // formData.email = "";
     // formData.message = "";
-    localStorage.removeItem('feedback-form-state')
+    localStorage.removeItem('feedback-form-state');
+    }
 };
 
 formEl.addEventListener("submit", sendForm);
