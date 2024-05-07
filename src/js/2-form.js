@@ -13,6 +13,8 @@ function feedbackData() {
     const dataStorage = JSON.parse(data);
     emailInputEL.value = dataStorage.email;
     msgInputEL.value = dataStorage.message;
+        formData.email = dataStorage.email;
+        formData.message = dataStorage.message;
     };
 };
 feedbackData();
@@ -26,13 +28,14 @@ formEl.addEventListener("input", saveData);
 
 function sendForm(event) {
     if (emailInputEL.value === "" || msgInputEL.value === "") {
+        event.preventDefault();
         return alert("Fill please all fields")
     } else {
     console.log(formData);
     event.preventDefault();
     event.currentTarget.reset();
-    // formData.email = "";
-    // formData.message = "";
+    formData.email = "";
+    formData.message = "";
     localStorage.removeItem('feedback-form-state');
     }
 };
